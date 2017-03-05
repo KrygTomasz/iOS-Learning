@@ -17,6 +17,8 @@
 		222FFB5C1E6A19F80076D88B /* CollectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222FFB5B1E6A19F80076D88B /* CollectionUITests.swift */; };
 		222FFB6F1E6A1DDC0076D88B /* CVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222FFB6D1E6A1DDC0076D88B /* CVCell.swift */; };
 		222FFB701E6A1DDC0076D88B /* CVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222FFB6E1E6A1DDC0076D88B /* CVCell.xib */; };
+		22AB24B91E6C69AD00992306 /* ViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AB24B81E6C69AD00992306 /* ViewTool.swift */; };
+		22AB24BB1E6C6C5200992306 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AB24BA1E6C6C5200992306 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		222FFB5D1E6A19F80076D88B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		222FFB6D1E6A1DDC0076D88B /* CVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCell.swift; sourceTree = "<group>"; };
 		222FFB6E1E6A1DDC0076D88B /* CVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVCell.xib; sourceTree = "<group>"; };
+		22AB24B81E6C69AD00992306 /* ViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTool.swift; sourceTree = "<group>"; };
+		22AB24BA1E6C6C5200992306 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 				222FFB3F1E6A19F70076D88B /* Collection.xcdatamodeld */,
 				222FFB6D1E6A1DDC0076D88B /* CVCell.swift */,
 				222FFB6E1E6A1DDC0076D88B /* CVCell.xib */,
+				22AB24B81E6C69AD00992306 /* ViewTool.swift */,
+				22AB24BA1E6C6C5200992306 /* Colors.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -273,9 +279,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				222FFB6F1E6A1DDC0076D88B /* CVCell.swift in Sources */,
+				22AB24BB1E6C6C5200992306 /* Colors.swift in Sources */,
 				222FFB3B1E6A19F70076D88B /* ViewController.swift in Sources */,
 				222FFB411E6A19F70076D88B /* Collection.xcdatamodeld in Sources */,
 				222FFB391E6A19F70076D88B /* AppDelegate.swift in Sources */,
+				22AB24B91E6C69AD00992306 /* ViewTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +534,7 @@
 				222FFB621E6A19F80076D88B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		222FFB631E6A19F80076D88B /* Build configuration list for PBXNativeTarget "CollectionTests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +543,7 @@
 				222FFB651E6A19F80076D88B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		222FFB661E6A19F80076D88B /* Build configuration list for PBXNativeTarget "CollectionUITests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +552,7 @@
 				222FFB681E6A19F80076D88B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

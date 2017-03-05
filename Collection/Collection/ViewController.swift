@@ -18,6 +18,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    @IBOutlet var mainView: UIView!
+    
+    @IBOutlet weak var titleView: UIView! {
+        didSet {
+            //titleView.backgroundColor = UIColor.yellow
+            let backgroundLayer = Colors.gradient(from: .red, to: .blue)
+            titleView.backgroundColor = UIColor.clear
+            backgroundLayer.frame = titleView.frame
+            titleView.layer.insertSublayer(backgroundLayer, at: 0)
+            ViewTool.addShadow(to: titleView)
+        }
+    }
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    var numberOfCells = 4
+    let CELLS_FOR_ROW: CGFloat = 1
+    let CELLS_FOR_COLUMN: CGFloat = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -31,7 +51,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CVCell", for: indexPath)// as UICollectionViewCell
         //let cell = CVCell.instanceFromNib()
-        cell.backgroundColor = UIColor.black
+        let color = 1 - CGFloat(indexPath.row)/CGFloat(numberOfCells)
+        cell.backgroundColor = UIColor.init(red: color, green: color, blue: color, alpha: 1)
         return cell
     }
     
@@ -40,7 +61,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return numberOfCells
     }
 
 }
@@ -48,7 +69,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 extension ViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 70, height: 70)
+        let cellWidth = collectionView.bounds.width/CELLS_FOR_ROW
+        let cellHeight = collectionView.bounds.height/CELLS_FOR_COLUMN
+        print("Wysokosc: \(cellHeight)")
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
 }
