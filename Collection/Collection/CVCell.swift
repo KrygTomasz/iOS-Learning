@@ -28,6 +28,7 @@ class CVCell: UICollectionViewCell {
         imageView.image = image
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .white
+        ViewTool.addShadow(to: imageView)
     }
 
 }
