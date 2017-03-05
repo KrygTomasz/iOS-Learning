@@ -9,7 +9,9 @@
 import UIKit
 
 class CVCell: UICollectionViewCell {
-
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,8 +21,13 @@ class CVCell: UICollectionViewCell {
         guard let cell = UINib(nibName: "CVCell", bundle: nil).instantiate(withOwner: self, options: nil).first as? CVCell else {
             return CVCell()
         }
-        cell.backgroundColor = UIColor.black
         return cell
+    }
+    
+    func initView(with image: UIImage) {
+        imageView.image = image
+        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .white
     }
 
 }

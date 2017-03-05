@@ -14,7 +14,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         didSet {
             collectionView.delegate = self
             collectionView.dataSource = self
-            collectionView.register(CVCell.self, forCellWithReuseIdentifier: "CVCell")
+            let cellNib = UINib(nibName: "CVCell", bundle: nil)
+            collectionView.register(cellNib, forCellWithReuseIdentifier: "CVCell")
         }
     }
     
@@ -22,12 +23,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var titleView: UIView! {
         didSet {
-            //titleView.backgroundColor = UIColor.yellow
-            let backgroundLayer = Colors.gradient(from: .red, to: .blue)
-            titleView.backgroundColor = UIColor.clear
-            backgroundLayer.frame = titleView.frame
-            titleView.layer.insertSublayer(backgroundLayer, at: 0)
+            ViewTool.addGradientBackground(to: titleView, using: [UIColor.yellow.cgColor, UIColor.orange.cgColor])
             ViewTool.addShadow(to: titleView)
+            titleView.backgroundColor = UIColor.yellow
         }
     }
     override var prefersStatusBarHidden: Bool {
@@ -37,6 +35,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var numberOfCells = 4
     let CELLS_FOR_ROW: CGFloat = 1
     let CELLS_FOR_COLUMN: CGFloat = 1
+    
+    let itemColors: [UIColor] = [UIColor(red: 1, green: 0.9, blue: 0, alpha: 1),
+                                 UIColor(red: 1, green: 0.8, blue: 0, alpha: 1),
+                                 UIColor(red: 1, green: 0.7, blue: 0, alpha: 1),
+                                 UIColor(red: 1, green: 0.6, blue: 0, alpha: 1)]
+    let highlightedItemColors: [UIColor] = [UIColor(red: 1, green: 1, blue: 0, alpha: 1),
+                                            UIColor(red: 1, green: 0.9, blue: 0, alpha: 1),
+                                            UIColor(red: 1, green: 0.8, blue: 0, alpha: 1),
+                                            UIColor(red: 1, green: 0.7, blue: 0, alpha: 1)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +56,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CVCell", for: indexPath)// as UICollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CVCell", for: indexPath) as? CVCell else { return UICollectionViewCell() }
         //let cell = CVCell.instanceFromNib()
-        let color = 1 - CGFloat(indexPath.row)/CGFloat(numberOfCells)
-        cell.backgroundColor = UIColor.init(red: color, green: color, blue: color, alpha: 1)
+        //let color = 1 - CGFloat(indexPath.row)/CGFloat(numberOfCells)
+        cell.backgroundColor = itemColors[indexPath.item]
+        cell.initView(with: #imageLiteral(resourceName: "playIcon"))
         return cell
     }
     
@@ -64,6 +72,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return numberOfCells
     }
 
+}
+
+// MARK: CollectionView highlight methods
+extension ViewController {
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let clickedCell = collectionView.cellForItem(at: indexPath)
+        clickedCell?.backgroundColor? = highlightedItemColors[indexPath.item]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let clickedCell = collectionView.cellForItem(at: indexPath)
+        clickedCell?.backgroundColor? = itemColors[indexPath.item]
+
+    }
+    
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {

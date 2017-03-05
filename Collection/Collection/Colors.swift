@@ -10,14 +10,38 @@ import UIKit
 
 class Colors {
     
-    static func gradient(from topColor: UIColor, to bottomColor: UIColor) -> CAGradientLayer {
+    static func gradient(using colors: [CGColor]) -> CAGradientLayer {
         
-        let topCGColor = topColor.cgColor
-        let bottomCGColor = bottomColor.cgColor
         let gradient = CAGradientLayer()
-        gradient.colors = [topCGColor, bottomCGColor,topCGColor]
-        gradient.locations = [0.0, 0.5, 1.0]
+        gradient.colors = colors
+        for i in 0..<colors.count {
+            let location: NSNumber = (NSNumber(value: (Float)(i)/(Float)(colors.count)))
+            gradient.locations?.append(location)
+        }
         return gradient
         
+    }
+}
+
+extension UIColor {
+    
+    func lighter(by percentage:CGFloat=30.0) -> UIColor? {
+        return self.adjust(by: abs(percentage) )
+    }
+    
+    func darker(by percentage:CGFloat=30.0) -> UIColor? {
+        return self.adjust(by: -1 * abs(percentage) )
+    }
+    
+    func adjust(by percentage:CGFloat=30.0) -> UIColor? {
+        var r:CGFloat=0, g:CGFloat=0, b:CGFloat=0, a:CGFloat=0;
+        if(self.getRed(&r, green: &g, blue: &b, alpha: &a)){
+            return UIColor(red: min(r + percentage/100, 1.0),
+                           green: min(g + percentage/100, 1.0),
+                           blue: min(b + percentage/100, 1.0),
+                           alpha: a)
+        } else {
+            return nil
+        }
     }
 }

@@ -21,4 +21,11 @@ class ViewTool {
         
     }
     
+    static func addGradientBackground(to view: UIView, using colors: [CGColor]) {
+        let backgroundLayer = Colors.gradient(using: colors)
+        view.backgroundColor = UIColor.clear
+        backgroundLayer.frame = view.frame
+        view.layer.insertSublayer(backgroundLayer, at: 0)
+    }
+    
 }
