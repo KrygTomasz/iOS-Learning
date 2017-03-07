@@ -19,6 +19,10 @@
 		222FFB701E6A1DDC0076D88B /* CVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222FFB6E1E6A1DDC0076D88B /* CVCell.xib */; };
 		22AB24B91E6C69AD00992306 /* ViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AB24B81E6C69AD00992306 /* ViewTool.swift */; };
 		22AB24BB1E6C6C5200992306 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AB24BA1E6C6C5200992306 /* Colors.swift */; };
+		22BF07EC1E6DEDCB00E95A04 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BF07EA1E6DEDCB00E95A04 /* GameVC.swift */; };
+		22BF07ED1E6DEDCB00E95A04 /* GameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BF07EB1E6DEDCB00E95A04 /* GameVC.xib */; };
+		22BF07F01E6DEF5300E95A04 /* GameCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BF07EE1E6DEF5300E95A04 /* GameCVCell.swift */; };
+		22BF07F11E6DEF5300E95A04 /* GameCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BF07EF1E6DEF5300E95A04 /* GameCVCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 		222FFB6E1E6A1DDC0076D88B /* CVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVCell.xib; sourceTree = "<group>"; };
 		22AB24B81E6C69AD00992306 /* ViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTool.swift; sourceTree = "<group>"; };
 		22AB24BA1E6C6C5200992306 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		22BF07EA1E6DEDCB00E95A04 /* GameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
+		22BF07EB1E6DEDCB00E95A04 /* GameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameVC.xib; sourceTree = "<group>"; };
+		22BF07EE1E6DEF5300E95A04 /* GameCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCVCell.swift; sourceTree = "<group>"; };
+		22BF07EF1E6DEF5300E95A04 /* GameCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameCVCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +115,7 @@
 		222FFB371E6A19F70076D88B /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				22BF07E91E6DEDAC00E95A04 /* Game */,
 				222FFB381E6A19F70076D88B /* AppDelegate.swift */,
 				222FFB3A1E6A19F70076D88B /* ViewController.swift */,
 				222FFB3C1E6A19F70076D88B /* Main.storyboard */,
@@ -138,6 +147,17 @@
 				222FFB5D1E6A19F80076D88B /* Info.plist */,
 			);
 			path = CollectionUITests;
+			sourceTree = "<group>";
+		};
+		22BF07E91E6DEDAC00E95A04 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				22BF07EA1E6DEDCB00E95A04 /* GameVC.swift */,
+				22BF07EB1E6DEDCB00E95A04 /* GameVC.xib */,
+				22BF07EE1E6DEF5300E95A04 /* GameCVCell.swift */,
+				22BF07EF1E6DEF5300E95A04 /* GameCVCell.xib */,
+			);
+			name = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,7 +270,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22BF07F11E6DEF5300E95A04 /* GameCVCell.xib in Resources */,
 				222FFB701E6A1DDC0076D88B /* CVCell.xib in Resources */,
+				22BF07ED1E6DEDCB00E95A04 /* GameVC.xib in Resources */,
 				222FFB461E6A19F70076D88B /* LaunchScreen.storyboard in Resources */,
 				222FFB431E6A19F70076D88B /* Assets.xcassets in Resources */,
 				222FFB3E1E6A19F70076D88B /* Main.storyboard in Resources */,
@@ -282,7 +304,9 @@
 				22AB24BB1E6C6C5200992306 /* Colors.swift in Sources */,
 				222FFB3B1E6A19F70076D88B /* ViewController.swift in Sources */,
 				222FFB411E6A19F70076D88B /* Collection.xcdatamodeld in Sources */,
+				22BF07EC1E6DEDCB00E95A04 /* GameVC.swift in Sources */,
 				222FFB391E6A19F70076D88B /* AppDelegate.swift in Sources */,
+				22BF07F01E6DEF5300E95A04 /* GameCVCell.swift in Sources */,
 				22AB24B91E6C69AD00992306 /* ViewTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,7 +459,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3FMVQ97S47;
 				INFOPLIST_FILE = Collection/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kryg.Collection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -449,7 +473,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3FMVQ97S47;
 				INFOPLIST_FILE = Collection/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kryg.Collection;
 				PRODUCT_NAME = "$(TARGET_NAME)";

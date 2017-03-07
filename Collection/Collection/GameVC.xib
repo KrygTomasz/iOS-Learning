@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameVC" customModule="Collection" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController id="LpM-Tr-5bU" customClass="GameVC" customModule="Collection" customModuleProvider="target">
+            <layoutGuides>
+                <viewControllerLayoutGuide type="top" id="QBW-ro-qrW"/>
+                <viewControllerLayoutGuide type="bottom" id="7jb-1i-Is9"/>
+            </layoutGuides>
+            <view key="view" contentMode="scaleToFill" id="mhM-R5-Dj1">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="af4-tk-TR0">
+                        <rect key="frame" x="16" y="80" width="343" height="571"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="B2Q-eL-vM5">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="955-Z3-7Gq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="64" id="9nZ-zM-i6k"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="955-Z3-7Gq" firstAttribute="leading" secondItem="mhM-R5-Dj1" secondAttribute="leading" id="9PC-8R-sC9"/>
+                    <constraint firstItem="7jb-1i-Is9" firstAttribute="top" secondItem="af4-tk-TR0" secondAttribute="bottom" constant="16" id="BJF-AX-fYe"/>
+                    <constraint firstItem="af4-tk-TR0" firstAttribute="leading" secondItem="mhM-R5-Dj1" secondAttribute="leading" constant="16" id="KfH-fW-K68"/>
+                    <constraint firstItem="955-Z3-7Gq" firstAttribute="top" secondItem="mhM-R5-Dj1" secondAttribute="top" id="T4n-fP-XLf"/>
+                    <constraint firstAttribute="trailing" secondItem="955-Z3-7Gq" secondAttribute="trailing" id="p6v-n3-hJC"/>
+                    <constraint firstAttribute="trailing" secondItem="af4-tk-TR0" secondAttribute="trailing" constant="16" id="wam-rX-yCy"/>
+                    <constraint firstItem="af4-tk-TR0" firstAttribute="top" secondItem="955-Z3-7Gq" secondAttribute="bottom" constant="16" id="zf5-7I-YHU"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="collectionView" destination="af4-tk-TR0" id="8C7-CM-pzB"/>
+            </connections>
+            <point key="canvasLocation" x="7.5" y="26.5"/>
+        </viewController>
+    </objects>
+</document>

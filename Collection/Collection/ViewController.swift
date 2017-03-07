@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum menuCells {
+    case game
+    case settings
+    case info
+    case highscores
+}
+
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -66,8 +73,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
 }
 
-// MARK: CollectionView highlight methods
+// MARK: CollectionView click methods
 extension ViewController {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 0{//menuCells.game.hashValue {
+            guard let GameVC: GameVC = UINib(nibName: "GameVC", bundle: nil).instantiate(withOwner: self, options: nil).first as? GameVC else {
+                return
+            }
+            self.navigationController?.pushViewController(GameVC, animated: true)
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         let clickedCell = collectionView.cellForItem(at: indexPath) as? CVCell
