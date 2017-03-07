@@ -8,45 +8,56 @@
 
 import UIKit
 
+protocol GameCVCellDelegate: class {
+    func canBeTapped() -> Bool
+    func tapCompletion()
+}
+
 class GameCVCell: UICollectionViewCell {
 
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var container: UIView!
+    
+    var delegate: GameCVCellDelegate?
+    
+    private let backImageView: UIImageView! = UIImageView(image: #imageLiteral(resourceName: "cardBackImage"))
+    private let frontImageView: UIImageView! = UIImageView(image: #imageLiteral(resourceName: "highscoresIcon"))
+    private var showingBack = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setView(with: #imageLiteral(resourceName: "playIcon"), isReversed: true)
+        //setView(with: #imageLiteral(resourceName: "playIcon"), isReversed: true)
+        
+        
+        frontImageView.contentMode = .scaleAspectFit
+        backImageView.contentMode = .scaleAspectFit
+        
+        self.container.addSubview(backImageView)
+        backImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(cellTap))
+        singleTap.numberOfTapsRequired = 1
+        container.addGestureRecognizer(singleTap)
         // Initialization code
     }
-    
-    var frontImage: UIImage?
-    var backImage: UIImage?
-    var isReversed = true
-    
-    func setView(with image: UIImage, isReversed: Bool) {
-        
-        imageView.image = image
-        frontImage = image
-        backImage = image
-        self.isReversed = isReversed
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTap))
-        self.addGestureRecognizer(tapGesture)
-        
+
+    func cellTap() {
+        if
+            let canBeTapped: Bool = delegate?.canBeTapped(),
+            canBeTapped {
+            flip()
+        } else {
+            return
+        }
     }
     
-    func cellTap() {
-        let front = UIImageView(image: frontImage)
-        let back = UIView(frame: self.frame)
-        back.backgroundColor = UIColor.black
-        self.contentView.addSubview(back)
-        if isReversed {
-            UIView.transition(from: back, to: front, duration: 1.0, options: .transitionFlipFromLeft, completion: nil)
-            isReversed = false
-        } else {
-            UIView.transition(from: front, to: back, duration: 1.0, options: .transitionFlipFromLeft, completion: nil)
-            isReversed = true
-        }
-        
+    private func flip() {
+        let toView = showingBack ? frontImageView : backImageView
+        let fromView = showingBack ? backImageView : frontImageView
+        UIView.transition(from: fromView!, to: toView!, duration: 1, options: .transitionFlipFromRight, completion: {_ in
+            self.delegate?.tapCompletion()
+        })
+        toView?.translatesAutoresizingMaskIntoConstraints = false
+        showingBack = !showingBack
     }
 
 }

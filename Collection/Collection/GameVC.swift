@@ -22,8 +22,10 @@ class GameVC: UIViewController {
     }
     
     let CELLS_FOR_ROW: CGFloat = 4
-    let CELLS_FOR_COLUMN: CGFloat = 2
+    let CELLS_FOR_COLUMN: CGFloat = 6
     var numberOfCells: CGFloat = 0
+    
+    var cardIsFlipping: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +58,7 @@ extension GameVC: UICollectionViewDelegate, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.backgroundColor = UIColor(red: CGFloat(indexPath.item)/CGFloat(numberOfCells), green: 1, blue: CGFloat(indexPath.item)/CGFloat(numberOfCells), alpha: 1)
+        cell.delegate = self
         return cell
     }
     
@@ -65,24 +68,6 @@ extension GameVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Int(numberOfCells)
-    }
-    
-    // MARK: CollectionView click methods
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let frontCell = collectionView.cellForItem(at: indexPath)?.contentView
-        guard let backCell: GameCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCVCell", for: indexPath) as? GameCVCell else { return }
-        UIView.transition(from: frontCell!, to: backCell, duration: 3.0, options: .transitionFlipFromLeft, completion: nil)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        guard let cell: GameCVCell = collectionView.cellForItem(at: indexPath) as? GameCVCell else { return }
-        cell.backgroundColor = .red
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        guard let cell: GameCVCell = collectionView.cellForItem(at: indexPath) as? GameCVCell else { return }
-        cell.backgroundColor = UIColor(red: CGFloat(indexPath.item)/CGFloat(numberOfCells), green: 1, blue: CGFloat(indexPath.item)/CGFloat(numberOfCells), alpha: 1)
     }
     
 }
@@ -101,6 +86,22 @@ extension GameVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+}
+
+extension GameVC: GameCVCellDelegate {
+    
+    func canBeTapped() -> Bool {
+        if cardIsFlipping {
+            return false
+        }
+        cardIsFlipping = true
+        return true
+    }
+    
+    func tapCompletion() {
+        cardIsFlipping = false
     }
     
 }

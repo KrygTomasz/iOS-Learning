@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GameCVCell" id="gTV-IL-0wX" customClass="GameCVCell" customModule="Collection" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="GameCVCell" id="gTV-IL-0wX" customClass="GameCVCell" customModule="Collection" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -19,18 +19,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qce-Yg-3gh">
                         <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mrF-WL-Sci">
-                                <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="mrF-WL-Sci" secondAttribute="bottom" id="3Se-7E-Q4I"/>
-                            <constraint firstItem="mrF-WL-Sci" firstAttribute="leading" secondItem="Qce-Yg-3gh" secondAttribute="leading" id="IwP-Vh-HNd"/>
-                            <constraint firstAttribute="trailing" secondItem="mrF-WL-Sci" secondAttribute="trailing" id="nNT-5f-GIA"/>
-                            <constraint firstItem="mrF-WL-Sci" firstAttribute="top" secondItem="Qce-Yg-3gh" secondAttribute="top" id="sac-ma-1DP"/>
-                        </constraints>
                     </view>
                 </subviews>
             </view>
@@ -42,7 +31,7 @@
             </constraints>
             <size key="customSize" width="160" height="160"/>
             <connections>
-                <outlet property="imageView" destination="mrF-WL-Sci" id="mMI-wa-A8T"/>
+                <outlet property="container" destination="Qce-Yg-3gh" id="nbD-cC-Uze"/>
             </connections>
             <point key="canvasLocation" x="89" y="109"/>
         </collectionViewCell>
