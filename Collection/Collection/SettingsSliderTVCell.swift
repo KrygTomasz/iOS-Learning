@@ -24,6 +24,11 @@ class SettingsSliderTVCell: UITableViewCell {
             slider.maximumValue = 8
         }
     }
+    
+    @IBOutlet weak var minimumLabel: UILabel!
+    
+    @IBOutlet weak var maximumLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -54,7 +59,7 @@ class SettingsSliderTVCell: UITableViewCell {
         
     }
     
-    func setType(_ type: SliderCellType) {
+    func setView(type: SliderCellType) {
         
         self.type = type
         loadState()
@@ -67,11 +72,18 @@ class SettingsSliderTVCell: UITableViewCell {
         switch cellType {
         case .height:
             titleLabel.text = "Adjust height"
+            slider.minimumValue = 4
+            slider.maximumValue = 8
             userDefaultsName = Defaults.CARD_HEIGHT
         case .width:
+            slider.minimumValue = 3
+            slider.maximumValue = 5
             titleLabel.text = "Adjust width"
             userDefaultsName = Defaults.CARD_WIDTH
         }
+        
+        minimumLabel.text = "\(slider.minimumValue)"
+        maximumLabel.text = "\(slider.maximumValue)"
         
         guard let key: String = userDefaultsName,
             let value: Float = UserDefaults().value(forKey: key) as? Float else { return }

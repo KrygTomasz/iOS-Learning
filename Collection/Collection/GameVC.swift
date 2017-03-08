@@ -10,6 +10,12 @@ import UIKit
 
 class GameVC: UIViewController {
 
+    @IBOutlet weak var exitButton: UIButton! {
+        didSet {
+            exitButton.setTitle("EXIT", for: .normal)
+            exitButton.addTarget(self, action: #selector(exitButtonClick), for: .touchUpInside)
+        }
+    }
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             let nibCell = UINib(nibName: "GameCVCell", bundle: nil)
@@ -21,15 +27,16 @@ class GameVC: UIViewController {
         }
     }
     
-    let CELLS_FOR_ROW: CGFloat = 4
-    let CELLS_FOR_COLUMN: CGFloat = 6
+    var cellsForRow: CGFloat = 4
+    var cellsForColumn: CGFloat = 6
     var numberOfCells: CGFloat = 0
     
     var cardIsFlipping: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        numberOfCells = CELLS_FOR_ROW * CELLS_FOR_COLUMN
+        loadData()
+        numberOfCells = cellsForRow * cellsForColumn
         // Do any additional setup after loading the view.
     }
 
@@ -40,6 +47,25 @@ class GameVC: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    private func loadData() {
+        
+        guard let rowCells: Float = UserDefaults().value(forKey: Defaults.CARD_WIDTH) as? Float,
+            let columnCells: Float = UserDefaults().value(forKey: Defaults.CARD_HEIGHT) as? Float else {
+                UserDefaults().setValue(4, forKey: Defaults.CARD_WIDTH)
+                UserDefaults().setValue(4, forKey: Defaults.CARD_HEIGHT)
+                return
+        }
+        cellsForRow = CGFloat(rowCells)
+        cellsForColumn = CGFloat(columnCells)
+
+    }
+    
+    func exitButtonClick() {
+        
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     /*
@@ -78,8 +104,8 @@ extension GameVC: UICollectionViewDelegate, UICollectionViewDataSource {
 extension GameVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = collectionView.bounds.width/CELLS_FOR_ROW
-        let cellHeight = collectionView.bounds.height/CELLS_FOR_COLUMN
+        let cellWidth = collectionView.bounds.width/cellsForRow
+        let cellHeight = collectionView.bounds.height/cellsForColumn
         return CGSize(width: cellWidth, height: cellHeight)
     }
     

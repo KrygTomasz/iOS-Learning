@@ -72,7 +72,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell: SettingsSliderTVCell = tableView.dequeueReusableCell(withIdentifier: "SettingsSliderTVCell", for: indexPath) as? SettingsSliderTVCell else {
             return UITableViewCell()
         }
-        cell.setType(cells[indexPath.item])
+        cell.setView(type: cells[indexPath.item])
         return cell
     }
     

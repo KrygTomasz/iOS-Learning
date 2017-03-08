@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,9 +32,21 @@
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="955-Z3-7Gq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RU-yZ-kh1">
+                                <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7RU-yZ-kh1" secondAttribute="height" multiplier="1:1" id="D8d-Lj-HET"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="7RU-yZ-kh1" firstAttribute="leading" secondItem="955-Z3-7Gq" secondAttribute="leading" id="4Kt-ab-Pa7"/>
                             <constraint firstAttribute="height" constant="64" id="9nZ-zM-i6k"/>
+                            <constraint firstAttribute="bottom" secondItem="7RU-yZ-kh1" secondAttribute="bottom" id="OkX-do-lwc"/>
+                            <constraint firstItem="7RU-yZ-kh1" firstAttribute="top" secondItem="955-Z3-7Gq" secondAttribute="top" id="oj4-Tn-o1a"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -50,6 +63,7 @@
             </view>
             <connections>
                 <outlet property="collectionView" destination="af4-tk-TR0" id="8C7-CM-pzB"/>
+                <outlet property="exitButton" destination="7RU-yZ-kh1" id="DcB-YS-gOE"/>
             </connections>
             <point key="canvasLocation" x="7.5" y="26.5"/>
         </viewController>
