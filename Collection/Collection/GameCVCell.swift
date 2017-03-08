@@ -28,8 +28,8 @@ class GameCVCell: UICollectionViewCell {
         //setView(with: #imageLiteral(resourceName: "playIcon"), isReversed: true)
         
         
-        frontImageView.contentMode = .scaleAspectFit
-        backImageView.contentMode = .scaleAspectFit
+        frontImageView.contentMode = .scaleAspectFill
+        backImageView.contentMode = .scaleAspectFill
         
         self.container.addSubview(backImageView)
         backImageView.translatesAutoresizingMaskIntoConstraints = false

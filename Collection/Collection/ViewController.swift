@@ -77,11 +77,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 extension ViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item == 0{//menuCells.game.hashValue {
-            guard let GameVC: GameVC = UINib(nibName: "GameVC", bundle: nil).instantiate(withOwner: self, options: nil).first as? GameVC else {
+        if indexPath.item == menuCells.game.hashValue {
+            guard let gameVC: GameVC = UINib(nibName: "GameVC", bundle: nil).instantiate(withOwner: self, options: nil).first as? GameVC else {
                 return
             }
-            self.navigationController?.pushViewController(GameVC, animated: true)
+            self.navigationController?.pushViewController(gameVC, animated: true)
+        } else if indexPath.item == menuCells.settings.hashValue {
+            guard let settingsVC: SettingsVC = UINib(nibName: "SettingsVC", bundle: nil).instantiate(withOwner: self, options: nil).first as? SettingsVC else {
+                return
+            }
+            self.navigationController?.pushViewController(settingsVC, animated: true)
         }
     }
     
