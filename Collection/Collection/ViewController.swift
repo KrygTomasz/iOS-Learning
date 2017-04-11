@@ -44,7 +44,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let CELLS_FOR_ROW: CGFloat = 1
     let CELLS_FOR_COLUMN: CGFloat = 1
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
