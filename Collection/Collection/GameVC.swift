@@ -31,7 +31,9 @@ class GameVC: UIViewController {
     var cellsForColumn: CGFloat = 6
     var numberOfCells: CGFloat = 0
     
-    var cardIsFlipping: Bool = false
+    //var cardIsFlipping: Bool = false
+    var flippedCards: [IndexPath] = []
+    var canBeFlipped: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +101,14 @@ extension GameVC: UICollectionViewDelegate, UICollectionViewDataSource {
         return Int(numberOfCells)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("\(indexPath.item)")
+        guard let cell = collectionView.cellForItem(at: indexPath) as? GameCVCell else { return }
+        if cell.tryFlip() {
+            flippedCards.append(indexPath)
+        }
+    }
+    
 }
 
 extension GameVC: UICollectionViewDelegateFlowLayout {
@@ -121,16 +131,44 @@ extension GameVC: UICollectionViewDelegateFlowLayout {
 
 extension GameVC: GameCVCellDelegate {
     
+//    func canBeTapped() -> Bool {
+//        if cardIsFlipping {
+//            return false
+//        }
+//        cardIsFlipping = true
+//        return true
+//    }
+//    
+//    func tapCompletion() {
+//        cardIsFlipping = false
+//    }
+    
     func canBeTapped() -> Bool {
-        if cardIsFlipping {
-            return false
+        if flippedCards.count < 2 {
+            if flippedCards.count == 1 {
+                canBeFlipped = false
+                }
+            return true
         }
-        cardIsFlipping = true
-        return true
+        canBeFlipped = false
+        return false
     }
     
-    func tapCompletion() {
-        cardIsFlipping = false
+    func flippingCompletion() {
+        if !canBeFlipped {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                // here implement flip back
+                // flipBack()
+                self.canBeFlipped = true
+                self.flippedCards.removeAll()
+                print("Can be flipped")
+            })
+        }
+        canBeFlipped = true
+    }
+    
+    private func unflipShowedCards() {
+        
     }
     
 }

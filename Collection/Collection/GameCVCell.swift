@@ -10,7 +10,7 @@ import UIKit
 
 protocol GameCVCellDelegate: class {
     func canBeTapped() -> Bool
-    func tapCompletion()
+    func flippingCompletion()
 }
 
 class GameCVCell: UICollectionViewCell {
@@ -25,7 +25,6 @@ class GameCVCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //setView(with: #imageLiteral(resourceName: "playIcon"), isReversed: true)
         
         
         frontImageView.contentMode = .scaleAspectFill
@@ -34,27 +33,28 @@ class GameCVCell: UICollectionViewCell {
         self.container.addSubview(backImageView)
         backImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        let singleTap = UITapGestureRecognizer(target: self, action: #selector(cellTap))
-        singleTap.numberOfTapsRequired = 1
-        container.addGestureRecognizer(singleTap)
+        //let singleTap = UITapGestureRecognizer(target: self, action: #selector(tap))
+        //singleTap.numberOfTapsRequired = 1
+        //container.addGestureRecognizer(singleTap)
         // Initialization code
     }
 
-    func cellTap() {
+    func tryFlip() -> Bool {
         if
             let canBeTapped: Bool = delegate?.canBeTapped(),
             canBeTapped {
             flip()
+            return true
         } else {
-            return
+            return false
         }
     }
     
     private func flip() {
         let toView = showingBack ? frontImageView : backImageView
         let fromView = showingBack ? backImageView : frontImageView
-        UIView.transition(from: fromView!, to: toView!, duration: 1, options: .transitionFlipFromRight, completion: {_ in
-            self.delegate?.tapCompletion()
+        UIView.transition(from: fromView!, to: toView!, duration: 3, options: .transitionFlipFromRight, completion: {_ in
+            self.delegate?.flippingCompletion()
         })
         toView?.translatesAutoresizingMaskIntoConstraints = false
         showingBack = !showingBack

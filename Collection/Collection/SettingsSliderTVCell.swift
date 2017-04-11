@@ -20,6 +20,7 @@ class SettingsSliderTVCell: UITableViewCell {
     @IBOutlet weak var slider: UISlider! {
         didSet {
             slider.addTarget(self, action: #selector(sliderChanged), for: .touchUpInside)
+            slider.addTarget(self, action: #selector(sliderChanged), for: .touchUpOutside)
             slider.minimumValue = 3
             slider.maximumValue = 8
         }
